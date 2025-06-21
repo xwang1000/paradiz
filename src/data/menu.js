@@ -124,14 +124,14 @@ export const menu = [
           { name: "Wings", price: 19, note: "Salt & Pepper or Hot, 1lb" },
           { name: "Chicken Samosa", price: 15, note: "2 pieces with chips and sour cream" },
           { name: "Veggie Samosa", price: 14, note: "2 pieces with chips and sour cream" },
-          { name: "Salad", price: 15, note: "Price Pending" },
+          { name: "Salad", price: 15 },
           { name: "Fries", price: 12 },
         ],
       },
       {
         name: "Snacks",
         items: [
-          { name: "Mixed Nuts", price:  12},
+          { name: "Mixed Fruit & Nuts", price:  12},
           { name: "Chips", price: 9, note: "With sour cream" },
           { name: "Peanut Butter Pretzels", price: 8 },
           { name: "Popcorn", price: 6 },
@@ -144,9 +144,16 @@ export const menu = [
           { name: "Cheesecake", price: 10 },
           { name: "Ice Cream", price: 10, note: "Vanilla/Saffron/Chocolate, 3 scoops" },
           { name: "Mini Cream Puffs", price: 8, note: "9 pieces" },
-          { name: "Mochi Ice Cream Trio", price: 8, note: "Vanilla, Mango, Green Tea" },
+          { name: "Mochi Ice Cream Trio", price: 7, note: "Vanilla, Mango, Strawberry" },
         ],
       },
+    ],
+  },
+  {
+    category: "Merch",
+    items: [
+      { name: "Disposable hookah", note: "for camping", price: 15 },
+      { name: "Premium Hookah", note: "for gifting & home", price: 200 },
     ],
   },
 ]; 

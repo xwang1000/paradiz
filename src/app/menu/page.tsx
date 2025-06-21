@@ -88,7 +88,7 @@ export default function MenuPage() {
   }, []);
 
   return (
-    <main className="max-w-4xl mx-auto px-4 py-12 overflow-x-hidden pl-12">
+    <main className="max-w-4xl mx-auto px-4 py-12 overflow-x-hidden pl-12 lg:pl-0">
       <div
         className="fixed top-0 left-0 h-screen pointer-events-none z-0"
         style={{
@@ -163,7 +163,7 @@ export default function MenuPage() {
           {cat.category === 'Food & Drinks' ? (
             <>
               {/* First row: Tea, Coffee, Cold Drinks */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-8">
                 {cat.subcategories.filter(sub => ['Tea', 'Coffee', 'Cold Drinks'].includes(sub.name)).map((sub, j) => (
                   <div key={sub.name + j}>
                     <div className="flex flex-wrap items-baseline gap-2 justify-between w-full">
@@ -233,7 +233,7 @@ export default function MenuPage() {
                 ))}
               </div>
               {/* Second row: Food, Snacks, Dessert */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
                 {cat.subcategories.filter(sub => ['Food', 'Snacks', 'Dessert'].includes(sub.name)).map((sub, j) => (
                   <div key={sub.name + j}>
                     <div className="flex flex-wrap items-baseline gap-2 justify-between w-full">
@@ -336,7 +336,7 @@ export default function MenuPage() {
                       <span className="ml-2 text-sm text-gray-700">{sub.note}</span>
                     )}
                   </div>
-                  <ul className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-0 ml-0">
+                  <ul className="grid grid-cols-2 lg:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-0 ml-0">
                     {sub.items.map((item, k) => {
                       const itemId = `${cat.category}-${sub.name}-${item.name}`;
                       return (
@@ -367,7 +367,7 @@ export default function MenuPage() {
                   </ul>
                 </>
               ) : sub.name === 'Mix Flavors' ? (
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
                   {/* First Column - Mix Flavors */}
                   <div>
                     <div className="flex items-baseline mb-2">
@@ -542,7 +542,7 @@ export default function MenuPage() {
                       <span className="ml-2 text-sm text-gray-700">{sub.note}</span>
                     )}
                   </div>
-                  <ul className="grid grid-cols-2 md:grid-cols-3 gap-8 ml-0">
+                  <ul className="grid grid-cols-2 lg:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-0 ml-0">
                     {sub.items.map((item, k) => {
                       const itemId = `${cat.category}-${sub.name}-${item.name}`;
                       return (

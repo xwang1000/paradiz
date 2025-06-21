@@ -1,29 +1,69 @@
+"use client";
+import { useState, useEffect } from 'react';
+import { PageHeading, PageSubtitle, SectionHeading, Typography, typographyClasses } from '@/components/Typography';
+
 export default function Hours() {
+  const [currentDay, setCurrentDay] = useState<string>('');
+
+  useEffect(() => {
+    // Get current day in Vancouver, Canada timezone
+    const vancouverTime = new Date().toLocaleString("en-US", {
+      timeZone: "America/Vancouver",
+      weekday: "long"
+    });
+    setCurrentDay(vancouverTime);
+  }, []);
+
+  const hoursData = [
+    { day: 'Monday', hours: '5:00 PM - 1:00 AM' },
+    { day: 'Tuesday', hours: '5:00 PM - 1:00 AM' },
+    { day: 'Wednesday', hours: '5:00 PM - 1:00 AM' },
+    { day: 'Thursday', hours: '5:00 PM - 1:00 AM' },
+    { day: 'Friday', hours: '6:00 PM - 2:00 AM' },
+    { day: 'Saturday', hours: '6:00 PM - 2:00 AM' },
+    { day: 'Sunday', hours: '6:00 PM - 1:00 AM' }
+  ];
+
   return (
     <div className="space-y-16">
       {/* Welcome Section */}
       <section className="bg-teal text-creme py-20 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Hours</h1>
-        <p className="text-xl text-creme">Visit us during our operating hours</p>
+        <PageHeading className="text-creme">Hours</PageHeading>
+        <PageSubtitle className="text-creme">Visit us during our operating hours</PageSubtitle>
       </section>
 
       {/* Hours Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
         <div className="card">
-          <h2 className="text-2xl font-bold text-teal mb-6">Operating Hours</h2>
+          <SectionHeading>Operating Hours</SectionHeading>
           <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <span className="font-medium">Monday - Thursday</span>
-              <span className="text-gray-600">11:00 AM - 12:00 AM</span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="font-medium">Friday - Saturday</span>
-              <span className="text-gray-600">11:00 AM - 1:00 AM</span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="font-medium">Sunday</span>
-              <span className="text-gray-600">11:00 AM - 12:00 AM</span>
-            </div>
+            {hoursData.map((item, index) => {
+              const isToday = currentDay === item.day;
+              return (
+                <div 
+                  key={index}
+                  className={`flex justify-between items-center p-3 rounded-lg transition-all duration-300 ${
+                    isToday 
+                      ? 'bg-teal text-creme shadow-lg transform scale-105' 
+                      : 'hover:bg-gray-50'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className={`font-medium ${isToday ? 'text-creme' : ''} ${typographyClasses.contactInfo}`}>
+                      {item.day}
+                    </span>
+                    {isToday && (
+                      <span className={typographyClasses.todayBadge}>
+                        TODAY
+                      </span>
+                    )}
+                  </div>
+                  <span className={`${isToday ? 'text-creme' : 'text-gray-600'} ${typographyClasses.contactInfo}`}>
+                    {item.hours}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
