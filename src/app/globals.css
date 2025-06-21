@@ -1,0 +1,567 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'Higuen Elegance Serif';
+  src: url('/fonts/Higuen Serif.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('/fonts/Avenir-Light.woff2') format('woff2'),
+       url('/fonts/Avenir-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Brandon Text';
+  src: url('/fonts/Brandon Text W01 Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Brandon Text';
+  src: url('/fonts/BrandonTextW01-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Brandon Text';
+  src: url('/fonts/BrandonTextW01-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --teal: #1D5A66;
+  --turquoise: #58ACB6;
+  --bronze: #a06e3a;
+  --creme: #FFFBEF;
+
+  --primary-color: var(--teal);
+  --accent-color: var(--bronze);
+  --background-color: var(--creme);
+  --text-color: var(--teal);
+  --section-1: 20, 20, 20;
+  --section-2: 30, 30, 30;
+  --section-3: 40, 40, 40;
+  --section-4: 30, 30, 30;
+  --section-5: 20, 20, 20;
+}
+
+[data-theme="light"] {
+  --primary-color: 245, 245, 240;
+  --accent-color: 0, 128, 128;
+  --bronze: 205, 127, 50;
+  --creme: 20, 20, 20;
+  --section-1: 245, 245, 240;
+  --section-2: 235, 235, 230;
+  --section-3: 225, 225, 220;
+  --section-4: 235, 235, 230;
+  --section-5: 245, 245, 240;
+}
+
+body {
+  background: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Brandon Text', sans-serif;
+  font-weight: 400;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Higuen Elegance Serif', serif;
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+.site-title {
+  font-family: 'Higuen Elegance Serif', serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  transition: color 0.5s ease;
+  text-decoration: none;
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.site-title[data-section="home"] {
+  color: rgb(255, 215, 0); /* Warm gold */
+}
+
+.site-title[data-section="about"] {
+  color: rgb(50, 205, 50); /* Vibrant green */
+}
+
+.site-title[data-section="menu"] {
+  color: rgb(147, 112, 219); /* Rich purple */
+}
+
+.site-title[data-section="hours"] {
+  color: rgb(255, 0, 255); /* Deep magenta */
+}
+
+.site-title[data-section="contact"] {
+  color: rgb(0, 255, 255); /* Cyan */
+}
+
+.subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  color: rgb(var(--accent-color));
+  opacity: 0.9;
+}
+
+.hookah-background {
+  position: fixed;
+  top: 5vh;
+  right: 0;
+  width: 50vw;
+  height: 90vh;
+  background-image: url('/img/hookah.svg');
+  background-size: contain;
+  background-position: right center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  mix-blend-mode: normal;
+  pointer-events: none;
+  z-index: 0;
+  filter: brightness(1.2);
+}
+
+img[src="/img/hookah.svg"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: auto !important;
+  object-fit: cover;
+  filter: brightness(1.1) saturate(0.8);
+  transition: filter 0.5s ease;
+  z-index: 0;
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-2 rounded-md transition-all duration-300;
+    background-color: rgba(var(--accent-color), 0.1);
+    color: rgb(var(--accent-color));
+    border: 1px solid rgba(var(--accent-color), 0.3);
+  }
+
+  .btn-primary:hover {
+    background-color: rgba(var(--accent-color), 0.2);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2 rounded-md transition-colors;
+    background: rgb(var(--text-secondary));
+    color: rgb(var(--text-primary));
+  }
+
+  .btn-secondary:hover {
+    opacity: 0.9;
+  }
+
+  .section-title {
+    font-family: 'Higuen Elegance Serif', serif;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    transition: color 0.5s ease;
+    letter-spacing: 1px;
+  }
+
+  .section-title[data-section="home"] {
+    color: rgb(255, 215, 0); /* Warm gold */
+  }
+
+  .section-title[data-section="about"] {
+    color: rgb(50, 205, 50); /* Vibrant green */
+  }
+
+  .section-title[data-section="menu"] {
+    color: rgb(147, 112, 219); /* Rich purple */
+  }
+
+  .section-title[data-section="hours"] {
+    color: rgb(255, 0, 255); /* Deep magenta */
+  }
+
+  .section-title[data-section="contact"] {
+    color: rgb(0, 255, 255); /* Cyan */
+  }
+
+  .section-subtitle {
+    @apply text-xl mb-12 text-center;
+    font-family: 'Avenir', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: rgb(var(--accent-color));
+    opacity: 0.9;
+  }
+
+  .card {
+    @apply p-8 rounded-lg backdrop-blur-sm;
+    background-color: rgba(42, 42, 42, 0.3);
+    border: 1px solid rgba(var(--bronze), 0.2);
+  }
+
+  .persian-pattern {
+    @apply absolute inset-0 opacity-5;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .persian-border {
+    position: relative;
+    border: 1px solid rgba(var(--bronze), 0.3);
+  }
+
+  .persian-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 1px solid rgba(var(--bronze), 0.1);
+    border-radius: 0.5rem;
+    pointer-events: none;
+  }
+
+  .tea-icon {
+    @apply w-12 h-12 mx-auto;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cd7f32' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z'/%3E%3Cline x1='6' y1='1' x2='6' y2='4'/%3E%3Cline x1='10' y1='1' x2='10' y2='4'/%3E%3Cline x1='14' y1='1' x2='14' y2='4'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .hookah-icon {
+    @apply w-12 h-12 mx-auto;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cd7f32' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2v20'/%3E%3Cpath d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .theme-switch {
+    @apply w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300;
+    background-color: rgba(var(--accent-color), 0.1);
+    border: 1px solid rgba(var(--accent-color), 0.3);
+  }
+
+  .theme-switch:hover {
+    background-color: rgba(var(--accent-color), 0.2);
+    transform: scale(1.1);
+  }
+
+  .theme-switch svg {
+    @apply w-5 h-5 transition-all duration-300;
+    color: rgb(var(--accent-color));
+  }
+
+  .theme-switch:hover svg {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes shine {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  .logo-shine {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.2) 25%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shine 2s ease-in-out;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .text-transition {
+    transition: color 0.3s ease;
+  }
+
+  /* Hero section - Yellow */
+  .text-transition[data-section="hero"] {
+    color: rgb(255, 215, 0); /* Warm gold */
+  }
+
+  /* About section - Magenta */
+  .text-transition[data-section="about"] {
+    color: rgb(255, 0, 255); /* Magenta */
+  }
+
+  /* Menu section - Green */
+  .text-transition[data-section="menu"] {
+    color: rgb(0, 255, 0); /* Green */
+  }
+
+  /* Contact section - Cyan */
+  .text-transition[data-section="contact"] {
+    color: rgb(0, 255, 255); /* Cyan */
+  }
+
+  /* Ensure all text elements inherit the current section color */
+  body[data-section="hero"] {
+    color: rgb(255, 215, 0);
+  }
+
+  body[data-section="about"] {
+    color: rgb(255, 0, 255);
+  }
+
+  body[data-section="menu"] {
+    color: rgb(0, 255, 0);
+  }
+
+  body[data-section="contact"] {
+    color: rgb(0, 255, 255);
+  }
+
+  /* Theme switch and menu button colors */
+  .theme-switch, .menu-button {
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+
+  .menu-button:hover, .theme-switch:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+
+  .menu-button:active, .theme-switch:active {
+    transform: scale(0.95);
+  }
+
+  .menu-button svg, .theme-switch svg {
+    transition: all 0.3s ease;
+  }
+
+  .menu-button:hover svg, .theme-switch:hover svg {
+    transform: rotate(5deg);
+  }
+
+  /* Menu items */
+  .menu-item {
+    background: transparent;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: inherit;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Higuen Elegance Serif', serif;
+    font-weight: 300;
+    width: 100%;
+    text-align: left;
+  }
+
+  .menu-item:hover {
+    background: rgba(var(--accent-rgb), 0.1);
+  }
+
+  .menu-item:active {
+    transform: translateX(2px);
+  }
+
+  /* Menu container */
+  .menu-container {
+    background: rgba(var(--background-rgb), 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(var(--accent-rgb), 0.2);
+    padding: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+h2, h3 {
+  transition: color 0.5s ease;
+}
+
+h2[data-section="home"], h3[data-section="home"] {
+  color: rgb(255, 215, 0); /* Warm gold */
+}
+
+h2[data-section="about"], h3[data-section="about"] {
+  color: rgb(50, 205, 50); /* Vibrant green */
+}
+
+h2[data-section="menu"], h3[data-section="menu"] {
+  color: rgb(147, 112, 219); /* Rich purple */
+}
+
+h2[data-section="hours"], h3[data-section="hours"] {
+  color: rgb(255, 0, 255); /* Deep magenta */
+}
+
+h2[data-section="contact"], h3[data-section="contact"] {
+  color: rgb(0, 255, 255); /* Cyan */
+}
+
+.card {
+  background: rgba(var(--background-rgb), 0.8);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background: rgba(var(--accent-rgb), 0.1);
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: inherit;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Higuen Elegance Serif', serif;
+  font-weight: 300;
+}
+
+.btn-primary:hover {
+  background: rgba(var(--accent-rgb), 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.font-higuen {
+  font-family: 'Higuen Elegance Serif', serif;
+  font-weight: 300;
+}
+
+.font-brandon-medium {
+  font-family: 'Brandon Text', sans-serif;
+  font-weight: 500;
+}
+
+.font-brandon-bold {
+  font-family: 'Brandon Text', sans-serif;
+  font-weight: 700;
+}
+
+/* Smoke animation removed */
+
+/* Smoke-related classes removed */
+
+/* Remove smoke-related classes */
+.smoke {
+  display: none;
+}
+
+.smoke-1, .smoke-2, .smoke-3 {
+  display: none;
+}
+
+/* Section-specific colors */
+[data-section="hero"] {
+  --section-color: #D4AF37; /* Retro gold */
+  --section-color-hover: #B38F2A;
+}
+
+[data-section="about"] {
+  --section-color: #9B4F96; /* Muted purple */
+  --section-color-hover: #7A3D76;
+}
+
+[data-section="menu"] {
+  --section-color: #2E8B57; /* Sea green */
+  --section-color-hover: #246B45;
+}
+
+[data-section="contact"] {
+  --section-color: #4682B4; /* Steel blue */
+  --section-color-hover: #36648B;
+}
+
+/* Hookah image filter effects */
+.hookah-image[data-section="hero"] {
+  filter: hue-rotate(0deg) saturate(0.8) brightness(1.1);
+}
+
+.hookah-image[data-section="about"] {
+  filter: hue-rotate(60deg) saturate(0.8) brightness(1.1);
+}
+
+.hookah-image[data-section="menu"] {
+  filter: hue-rotate(120deg) saturate(0.8) brightness(1.1);
+}
+
+.hookah-image[data-section="contact"] {
+  filter: hue-rotate(200deg) saturate(0.8) brightness(1.1);
+}
+
+.text-primary {
+  color: var(--teal) !important;
+}
+.text-accent {
+  color: var(--bronze) !important;
+}
+.bg-primary {
+  background-color: var(--teal) !important;
+}
+.bg-accent {
+  background-color: var(--bronze) !important;
+}
+.bg-turquoise {
+  background-color: var(--turquoise) !important;
+}
+.bg-creme {
+  background-color: var(--creme) !important;
+}
+
+.font-brandon {
+  font-family: 'Brandon Text', sans-serif;
+} 
+
+#menu-logo {
+  transition: all 0.5s cubic-bezier(0.4,0,0.2,1), width 0.5s cubic-bezier(0.4,0,0.2,1);
+}
