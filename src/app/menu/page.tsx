@@ -3,6 +3,7 @@ import { menu } from '@/data/menu';
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { Leaf } from 'lucide-react';
+import LogoHeader from '@/components/LogoHeader';
 
 export default function MenuPage() {
   const maxH = typeof window !== 'undefined' ? window.innerHeight * 0.5 : 300; // fallback for SSR
@@ -105,7 +106,7 @@ export default function MenuPage() {
       
       {/* Small logo that fades in/out */}
       <div 
-        className="fixed top-4 right-4 z-[9999] pointer-events-auto"
+        className="fixed bottom-6 right-6 z-[9999] pointer-events-auto"
         style={{ 
           opacity: smallLogoOpacity,
           transition: 'opacity 0.5s ease-in-out',
@@ -127,19 +128,13 @@ export default function MenuPage() {
         className="flex items-center justify-center mb-6 w-full relative"
         style={{ height: '50vh', width: '100%', position: 'relative', padding: '50px' }}
       >
-        <Link href="/">
-          <img
-            src="/img/paradiz_logo_creme.svg"
-            alt="Paradiz Logo"
-            className="md:h-full md:w-full h-auto w-auto"
-            style={{ maxHeight: '100%', position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}
-          />
-        </Link>
+        <LogoHeader 
+          showLogo={true}
+          showTitle={true}
+          showSubtitle={true}
+        />
       </div>
-      <h1 className="text-center mb-8">
-        <div className="text-5xl font-higuen mb-1 uppercase tracking-[6px]">Paradiz</div>
-        <div className="text-xl font-brandon font-medium uppercase tracking-[1px]">Hookah Lounge & Tea House</div>
-      </h1>
+
       {menu.map((cat, i) => (
         <section key={cat.category + i} className="mb-10">
           <h2 
