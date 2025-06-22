@@ -19,6 +19,7 @@ export default function MenuPage() {
   // Helper function to identify vegetarian items
   const isVegetarian = (itemName) => {
     const vegetarianItems = [
+      'Mixed Fruit & Nuts',
       'Veggie Samosa',
       'Salad',
       'Fries',
@@ -171,7 +172,7 @@ export default function MenuPage() {
             <>
               {/* First row: Tea, Coffee, Cold Drinks */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-8">
-                {cat.subcategories.filter(sub => ['Tea', 'Coffee', 'Cold Drinks'].includes(sub.name)).map((sub, j) => (
+                {cat.subcategories?.filter(sub => ['Tea', 'Coffee', 'Cold Drinks'].includes(sub.name)).map((sub, j) => (
                   <div key={sub.name + j}>
                     <div className="flex flex-wrap items-baseline gap-2 justify-between w-full">
                       <h3 
@@ -241,7 +242,7 @@ export default function MenuPage() {
               </div>
               {/* Second row: Food, Snacks, Dessert */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-                {cat.subcategories.filter(sub => ['Food', 'Snacks', 'Dessert'].includes(sub.name)).map((sub, j) => (
+                {cat.subcategories?.filter(sub => ['Food', 'Snacks', 'Dessert'].includes(sub.name)).map((sub, j) => (
                   <div key={sub.name + j}>
                     <div className="flex flex-wrap items-baseline gap-2 justify-between w-full">
                       <h3 
@@ -312,7 +313,7 @@ export default function MenuPage() {
             </>
           ) : (
           /* Subcategories (default layout) */
-          cat.subcategories && cat.subcategories.map((sub, j) => (
+          cat.subcategories?.map((sub, j) => (
             <div key={sub.name + j} className="mb-6">
               {sub.name === 'Single Flavours' ? (
                 <>
@@ -444,7 +445,7 @@ export default function MenuPage() {
                   
                   {/* Second Column - Premium Mix and Special Add-on */}
                   <div>
-                    {cat.subcategories.filter(s => s.name === 'Premium Mix' || s.name === 'Special Add-on').map((rightSub, idx) => (
+                    {cat.subcategories?.filter(s => s.name === 'Premium Mix' || s.name === 'Special Add-on').map((rightSub, idx) => (
                       <div key={rightSub.name + idx} className={idx > 0 ? "mt-6" : ""}>
                         <div className="flex items-baseline w-full mb-2">
                           <h3 
@@ -495,11 +496,13 @@ export default function MenuPage() {
                                     {isVegetarian(item.name) && (
                                       <Leaf className="w-4 h-4 text-green-600" />
                                     )}
+                                    {item.price && (
+                                      <span className="text-base font-brandon-bold uppercase tracking-wide text-accent ml-2 md:hidden">{item.price}</span>
+                                    )}
                                   </span>
-                                  {item.price && <>
-                                    <span className="flex-1 border-b-2 border-dotted border-accent mx-2 block md:hidden"></span>
-                                    <span className="text-base font-brandon-bold uppercase tracking-wide text-accent">{item.price}</span>
-                                  </>}
+                                  {item.price && (
+                                    <span className="text-base font-brandon-bold uppercase tracking-wide text-accent hidden md:inline">{item.price}</span>
+                                  )}
                                   {item.flavors && (
                                     <span className="text-sm text-gray-500">({item.flavors})</span>
                                   )}
