@@ -1,7 +1,10 @@
 {
-  "name": "paradiz",
-  "version": "0.1.0",
+  "name": "paradiz-hookah-lounge",
+  "version": "1.0.0",
   "private": true,
+  "description": "Paradiz Hookah Lounge & Tea House - Premium hookah and tea experience in Port Moody, BC",
+  "keywords": ["hookah", "tea house", "lounge", "port moody", "vancouver", "shisha", "tea", "restaurant"],
+  "author": "Paradiz Hookah Lounge & Tea House",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

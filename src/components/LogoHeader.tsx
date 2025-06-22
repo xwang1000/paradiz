@@ -51,6 +51,7 @@ export default function LogoHeader({
               className="md:h-full md:w-full h-auto w-auto transition-all duration-1000 ease-out"
               style={{ 
                 width: '300px', 
+                minWidth: '200px',
                 height: 'auto',
                 opacity: logoVisible ? 1 : 0,
                 transform: logoVisible ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.95)'

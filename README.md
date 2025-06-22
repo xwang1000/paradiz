@@ -1,39 +1,41 @@
 # Paradiz Hookah Lounge & Tea House
 
-A modern, responsive website for Paradiz Hookah Lounge & Tea House built with Next.js, TypeScript, and Tailwind CSS.
+A modern, elegant website for Paradiz Hookah Lounge & Tea House, located in Port Moody, BC. This website showcases our premium hookah and tea experience with a sophisticated design that reflects our brand.
+
+## About Paradiz
+
+Paradiz Hookah Lounge & Tea House offers a unique blend of traditional hookah culture and modern tea house ambiance. Located at 3058 St Johns St, Port Moody, we provide:
+
+- Premium hookah flavors and equipment
+- Artisan tea selection
+- Cozy lounge atmosphere
+- Private events and celebrations
+- Outdoor seating (weather permitting)
 
 ## Features
 
-- **Modern Design**: Clean, elegant design with custom typography
-- **Responsive**: Fully responsive across all devices
-- **Dark/Light Theme**: Toggle between dark and light themes
-- **Animated Logo**: Interactive logo that transforms on scroll
-- **Universal Navigation**: Consistent navigation across all pages
-- **Menu Display**: Beautiful menu layout with categories and pricing
-- **Custom Fonts**: Higuen and Brandon fonts for elegant typography
-
-## Tech Stack
-
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Icons**: Lucide React
-- **Theme**: next-themes for dark/light mode
-- **Fonts**: Custom Higuen and Brandon fonts
+- ✅ Modern Next.js with TypeScript
+- ✅ Responsive design for all devices
+- ✅ SEO optimized with proper metadata
+- ✅ Fast loading and performance
+- ✅ Beautiful animations and transitions
+- ✅ Menu showcase
+- ✅ Contact information and hours
+- ✅ Social media integration
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js (version 18 or higher)
 - npm or yarn
 
 ### Installation
 
-1. Clone the repository:
+1. Clone this repository:
 ```bash
 git clone <your-repo-url>
-cd paradiz
+cd paradiz-hookah-lounge
 ```
 
 2. Install dependencies:
@@ -41,61 +43,81 @@ cd paradiz
 npm install
 ```
 
-3. Run the development server:
+3. Start the development server:
 ```bash
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+The app will open at [http://localhost:3000](http://localhost:3000).
 
 ## Project Structure
 
 ```
 src/
-├── app/                 # Next.js App Router pages
-│   ├── globals.css     # Global styles and custom fonts
-│   ├── layout.tsx      # Root layout with theme provider
+├── app/                 # Next.js App Router
+│   ├── layout.tsx      # Root layout with metadata
 │   ├── page.tsx        # Homepage
 │   ├── menu/           # Menu page
 │   ├── about-us/       # About page
 │   ├── contact/        # Contact page
 │   └── hours/          # Hours page
-├── components/         # Reusable components
-│   ├── Navigation.tsx  # Universal navigation
-│   └── ThemeProvider.tsx # Theme context provider
-└── data/              # Static data
-    └── menu.js        # Menu items data
-public/
-├── fonts/             # Custom font files
-└── img/               # Images and assets
+├── components/         # Reusable UI components
+│   ├── LogoHeader.tsx  # Logo and header component
+│   ├── ThemeProvider.tsx # Theme management
+│   └── Typography.tsx  # Typography system
+├── public/             # Static assets
+│   └── img/           # Images and graphics
+└── styles/            # Global styles
 ```
 
-## Deployment
+## SEO Features
 
-This project can be easily deployed to:
-
-- **Vercel** (Recommended for Next.js)
-- **Netlify**
-- **Railway**
-- **Render**
+- Optimized meta tags for search engines
+- Structured data for local business
+- Fast loading times
+- Mobile-friendly design
+- Proper heading hierarchy
+- Alt text for images
+- Sitemap generation
 
 ## Customization
 
-### Fonts
-The project uses custom fonts:
-- **Higuen Elegance Serif**: For headings and titles
-- **Brandon Text**: For body text and descriptions
+### Content Updates
 
-### Colors
-The color scheme can be customized in `tailwind.config.ts` and `globals.css`.
+- Update business information in `src/app/layout.tsx`
+- Modify menu items in the menu page
+- Update hours and contact information
+- Add new pages as needed
 
-### Menu Items
-Menu items are stored in `src/data/menu.js` and can be easily updated.
+### Styling
 
-## License
+- Main styles are in `src/app/globals.css`
+- Tailwind CSS for utility classes
+- Custom CSS variables for theming
+- Responsive design included
 
-This project is private and proprietary to Paradiz Hookah Lounge & Tea House.
+## Deployment
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Deployment Options
+
+1. **Vercel**: Recommended for Next.js apps
+2. **Netlify**: Drag and drop deployment
+3. **AWS Amplify**: Full-stack deployment
+4. **Traditional hosting**: Export static files
 
 ## Contact
 
-For questions or support, please contact the development team. 
+**Paradiz Hookah Lounge & Tea House**
+- Address: 3058 St Johns St, Port Moody, BC
+- Instagram: [@paradizteahouse](https://instagram.com/paradizteahouse)
+- Email: info@paradizhookah.com
+
+## License
+
+This project is proprietary to Paradiz Hookah Lounge & Tea House. 

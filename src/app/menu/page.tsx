@@ -14,6 +14,7 @@ export default function MenuPage() {
   const [smallLogoOpacity, setSmallLogoOpacity] = useState(0);
   const [visibleSections, setVisibleSections] = useState<Set<number>>(new Set());
   const [visibleItems, setVisibleItems] = useState<Set<string>>(new Set());
+  const [noticeVisible, setNoticeVisible] = useState(false);
 
   // Helper function to identify vegetarian items
   const isVegetarian = (itemName) => {
@@ -88,6 +89,15 @@ export default function MenuPage() {
     return () => observer.disconnect();
   }, []);
 
+  // Fade in notice after a delay
+  useEffect(() => {
+    const noticeTimer = setTimeout(() => {
+      setNoticeVisible(true);
+    }, 1200);
+
+    return () => clearTimeout(noticeTimer);
+  }, []);
+
   return (
     <main className="max-w-4xl mx-auto px-4 py-12 overflow-x-hidden pl-12 lg:pl-0">
       <div
@@ -126,7 +136,7 @@ export default function MenuPage() {
       <div
         ref={logoBoxRef}
         className="flex items-center justify-center mb-6 w-full relative"
-        style={{ height: '50vh', width: '100%', position: 'relative', padding: '50px' }}
+        style={{ width: '100%', position: 'relative', padding: '50px' }}
       >
         <LogoHeader 
           showLogo={true}
@@ -149,7 +159,9 @@ export default function MenuPage() {
           </h2>
           {/* Notice */}
           {cat.items && cat.items[0]?.isNotice ? (
-            <div className="text-accent font-brandon text-center mb-4">
+            <div className={`text-accent font-brandon text-center mb-4 transition-all duration-1000 ease-out ${
+              noticeVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}>
               {cat.items[0].name}
             </div>
           ) : null}
