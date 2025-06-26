@@ -107,6 +107,28 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                function getTimeBasedTheme() {
+                  const hour = new Date().getHours();
+                  return (hour >= 8 && hour < 16) ? 'light' : 'dark';
+                }
+                
+                const savedTheme = localStorage.getItem('theme');
+                const theme = savedTheme || getTimeBasedTheme();
+                document.documentElement.setAttribute('data-theme', theme);
+                
+                if (!savedTheme) {
+                  localStorage.setItem('theme', theme);
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className={inter.className}>
         <ThemeProvider>
           <LocalBusinessSchema />
