@@ -16,26 +16,6 @@ export default function MenuPage() {
   const [visibleItems, setVisibleItems] = useState<Set<string>>(new Set());
   const [noticeVisible, setNoticeVisible] = useState(false);
 
-  // Helper function to identify vegetarian items
-  const isVegetarian = (itemName) => {
-    const vegetarianItems = [
-      'Mixed Fruit & Nuts',
-      'Veggie Samosa',
-      'Salad',
-      'Fries',
-      'Chips',
-      'Peanut Butter Pretzels',
-      'Popcorn',
-      'Mixed Nuts',
-      'Baklava',
-      'Cheesecake',
-      'Ice Cream',
-      'Mini Cream Puffs',
-      'Mochi Ice Cream Trio'
-    ];
-    return vegetarianItems.includes(itemName);
-  };
-
   useEffect(() => {
     // Set initial width based on aspect ratio
     setLogoSize({ height: maxH, width: maxH * aspectRatio });
@@ -100,7 +80,7 @@ export default function MenuPage() {
   }, []);
 
   return (
-    <main className="max-w-4xl mx-auto px-4 py-12 overflow-x-hidden pl-12 lg:pl-0">
+    <main className="max-w-4xl mx-auto px-4 py-12 overflow-x-hidden pl-10 lg:pl-0">
       <div
         className="fixed top-0 left-0 h-screen pointer-events-none z-0"
         style={{
@@ -218,7 +198,7 @@ export default function MenuPage() {
                             <div className="flex flex-wrap items-baseline gap-2 justify-between w-full">
                               <span className="font-medium font-brandon-bold uppercase tracking-[1px] flex items-center gap-1">
                                 {item.name}
-                                {isVegetarian(item.name) && (
+                                {item.vegetarian && (
                                   <Leaf className="w-4 h-4 text-green-600" />
                                 )}
                               </span>
@@ -288,7 +268,7 @@ export default function MenuPage() {
                             <div className="flex flex-wrap items-baseline gap-2 justify-between w-full">
                               <span className="font-medium font-brandon-bold uppercase tracking-[1px] flex items-center gap-1">
                                 {item.name}
-                                {isVegetarian(item.name) && (
+                                {item.vegetarian && (
                                   <Leaf className="w-4 h-4 text-green-600" />
                                 )}
                               </span>
@@ -361,7 +341,7 @@ export default function MenuPage() {
                           <div className="flex flex-wrap items-baseline gap-2 justify-between w-full">
                             <span className="font-medium font-brandon-bold uppercase tracking-[1px] text-sm flex items-center gap-1">
                               {item.name}
-                              {isVegetarian(item.name) && (
+                              {item.vegetarian && (
                                 <Leaf className="w-4 h-4 text-green-600" />
                               )}
                               {item.note && (
@@ -422,7 +402,7 @@ export default function MenuPage() {
                             <div className="flex flex-wrap items-baseline gap-2 justify-between w-full">
                               <span className="font-medium font-brandon-bold uppercase tracking-[1px] flex items-center gap-1">
                                 {item.name}
-                                {isVegetarian(item.name) && (
+                                {item.vegetarian && (
                                   <Leaf className="w-4 h-4 text-green-600" />
                                 )}
                               </span>
@@ -493,7 +473,7 @@ export default function MenuPage() {
                                 <div className="flex flex-wrap items-baseline gap-2 w-full">
                                   <span className="font-medium font-brandon-bold uppercase tracking-[1px] flex items-center gap-1">
                                     {item.name}
-                                    {isVegetarian(item.name) && (
+                                    {item.vegetarian && (
                                       <Leaf className="w-4 h-4 text-green-600" />
                                     )}
                                     {item.price && (
@@ -569,7 +549,7 @@ export default function MenuPage() {
                           <div className="flex flex-wrap items-baseline gap-2 justify-between w-full">
                             <span className="font-medium font-brandon-bold uppercase tracking-[1px] flex items-center gap-1">
                               {item.name}
-                              {isVegetarian(item.name) && (
+                              {item.vegetarian && (
                                 <Leaf className="w-4 h-4 text-green-600" />
                               )}
                             </span>
@@ -613,7 +593,7 @@ export default function MenuPage() {
                   <div className="flex flex-wrap items-baseline gap-2 justify-between w-full">
                     <span className="font-medium font-brandon-bold uppercase tracking-[1px] flex items-center gap-1">
                       {item.name}
-                      {isVegetarian(item.name) && (
+                      {item.vegetarian && (
                         <Leaf className="w-4 h-4 text-green-600" />
                       )}
                     </span>

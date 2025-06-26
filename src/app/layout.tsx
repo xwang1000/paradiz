@@ -13,6 +13,11 @@ export const metadata: Metadata = {
     template: '%s | Paradiz Hookah Lounge & Tea House'
   },
   description: 'Experience premium hookah and artisan tea at Paradiz Hookah Lounge & Tea House in Port Moody, BC. Vancouver\'s premier hookah lounge and Middle Eastern tea house with outdoor seating and private events. Best hookah and shisha in Greater Vancouver.',
+  icons: {
+    icon: '/img/favicon.ico',
+    shortcut: '/img/favicon.ico',
+    apple: '/img/favicon.ico',
+  },
   keywords: [
     'hookah lounge',
     'tea house',
