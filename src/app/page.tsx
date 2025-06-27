@@ -1,109 +1,87 @@
 'use client';
-
-import { useState, useEffect } from 'react';
+import PageContainer from '@/components/PageContainer';
 import Link from 'next/link';
 import LogoHeader from '@/components/LogoHeader';
-import { useTheme } from '@/components/ThemeProvider';
-import { Typography, typographyClasses } from '@/components/Typography';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
-  const { theme } = useTheme();
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [addressVisible, setAddressVisible] = useState(false);
-  const [messageVisible, setMessageVisible] = useState(false);
-  const [buttonVisible, setButtonVisible] = useState(false);
-
+  const [currentDay, setCurrentDay] = useState<number | null>(null);
   useEffect(() => {
-    // Trigger fade-in animation after a longer delay
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 800);
-
-    // Staggered animations for other elements
-    const addressTimer = setTimeout(() => {
-      setAddressVisible(true);
-    }, 1400);
-
-    const messageTimer = setTimeout(() => {
-      setMessageVisible(true);
-    }, 1600);
-
-    const buttonTimer = setTimeout(() => {
-      setButtonVisible(true);
-    }, 1800);
-
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(addressTimer);
-      clearTimeout(messageTimer);
-      clearTimeout(buttonTimer);
-    };
+    setCurrentDay(new Date().getDay()); // 0=Sunday, 1=Monday, ...
   }, []);
 
   return (
-    <main className="relative">
-      
-      <div
-        className="fixed top-0 left-0 h-screen pointer-events-none z-10"
-        style={{
-          backgroundImage: 'url(/img/frame.PNG)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'left center',
-          backgroundRepeat: 'no-repeat',
-          width: '10%',
-          minWidth: '30px',
-          maxWidth: '20px',
-          left: '-5px'
-        }}
-      />
-      
-      <section className="min-h-screen flex items-center justify-center relative">
-        <div className={`z-10 transition-all duration-1200 ease-out pl-12 lg:pl-0 ${
-          isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-        }`}>
-          <div className="max-w-2xl mx-auto">
-            <LogoHeader 
-              showLogo={true}
-              showTitle={true}
-              showSubtitle={true}
-            />
-            <p className={`text-lg mb-8 ${typographyClasses.contactInfo} tracking-[1px] text-center transition-all duration-1000 ease-out ${
-              addressVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
-              3058 St Johns St, Port Moody
-            </p>
-            <div className={`text-center mb-8 transition-all duration-1000 ease-out ${
-              messageVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
-              <p className={`text-xl font-higuen mb-2 text-accent uppercase tracking-[2px]`}>
-                Re-Opening Soon!
-              </p>
-              <p className={`text-base ${typographyClasses.contactInfo} tracking-[1px]`}>
-                Follow us on{' '}
-                <a 
-                  href="https://instagram.com/paradizteahouse" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-accent hover:text-accent-dark underline"
-                >
-                  Instagram
-                </a>
-                {' '}to learn about our newest updates!
-              </p>
+    <PageContainer>
+      <LogoHeader showLogo={true} showTitle={true} showSubtitle={true} />
+      <div className="flex flex-col items-center gap-8 mt-8 min-w-[300px] text-center w-full">
+        {/* <p className="text-lg font-brandon leading-relaxed mb-4">
+          Experience premium hookah and artisan tea in Port Moody, BC. Vancouver's premier hookah lounge and Middle Eastern tea house.
+        </p> */}
+        <Link href="/menu" className="btn-primary text-lg px-8 py-3">
+          View Menu
+        </Link>
+        
+        <div className="mt-12 w-full max-w-md">
+          <div className="space-y-3">
+            <div>
+              <p className="text-base font-brandon">3058 St Johns St, Port Moody</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-brandon font-semibold mb-1">Reservations</h3>
+              <p className="text-base font-brandon">(604) 724-7235</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-brandon font-semibold mb-1">Follow Us on Instagram</h3>
+              <a 
+                href="https://instagram.com/paradizteahouse" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-base font-brandon text-teal hover:text-teal-dark transition-colors"
+              >
+                @paradizteahouse
+              </a>
             </div>
           </div>
-          <div className={`flex flex-col sm:flex-row gap-4 justify-center text-center transition-all duration-1000 ease-out ${
-            buttonVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-            <Link 
-              href="/menu"
-              className={`btn-primary text-lg px-8 py-3`}
-            >
-              View Menu
-            </Link>
+        </div>
+        <div className="mt-8 w-full max-w-md">
+          <h2 className="text-2xl font-higuen font-bold mb-4 uppercase tracking-[2px]">Hours</h2>
+          <div className="space-y-2 text-base font-brandon">
+            {[
+              { label: 'Monday', hours: '5pm - 1am' },
+              { label: 'Tuesday', hours: '5pm - 1am' },
+              { label: 'Wednesday', hours: '5pm - 1am' },
+              { label: 'Thursday', hours: '5pm - 1am' },
+              { label: 'Friday', hours: '6pm - 2am' },
+              { label: 'Saturday', hours: '6pm - 2am' },
+              { label: 'Sunday', hours: '5pm - 1am' },
+            ].map((day, idx) => {
+              const dayToGetDay = [1,2,3,4,5,6,0];
+              return (
+                <div
+                  key={day.label}
+                  className={`flex justify-between w-full rounded transition-colors items-center ${
+                    currentDay === dayToGetDay[idx]
+                      ? 'bg-teal text-creme font-bold shadow px-6 py-3 my-2'
+                      : 'px-2 py-1'
+                  }`}
+                >
+                  <span>{day.label}</span>
+                  <span>{day.hours}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
-      </section>
-    </main>
+        
+        {/* <div className="mt-12">
+          <h2 className="text-2xl font-higuen font-bold mb-2 uppercase tracking-[2px]">About Us</h2>
+          <h3 className="text-lg font-brandon mb-2">A modern haven for hookah and tea lovers</h3>
+          <p className="text-base font-brandon leading-relaxed">
+            Paradiz Teahouse &amp; Hookah Lounge is a contemporary retreat where tradition meets modern comfort. We offer a unique blend of authentic hookah experiences and premium tea selections in a luxurious setting.<br /><br />
+            Our mission is to create a welcoming space where guests can relax, socialize, and enjoy the finest flavors in an elegant atmosphere.
+          </p>
+        </div> */}
+      </div>
+    </PageContainer>
   );
 } 

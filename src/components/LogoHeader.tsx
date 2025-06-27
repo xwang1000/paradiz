@@ -41,9 +41,12 @@ export default function LogoHeader({
   }, []);
 
   return (
-    <div className={`text-center ${className}`}>
+    <div
+      className={`text-center ${className}`}
+      style={{ width: '100%', position: 'relative', padding: '50px 20px' }}
+    >
       {showLogo && (
-        <div className="flex items-center justify-center mb-6 w-full relative" style={{ width: '100%', position: 'relative', padding: '0 50px' }}>
+        <div className="flex items-center justify-center mb-6 w-full relative mb-6" style={{ width: '100%', position: 'relative' }}>
           <Link href="/">
             <img
               src="/img/paradiz_logo.svg"
@@ -72,13 +75,24 @@ export default function LogoHeader({
       )}
       
       {showSubtitle && (
-        <div 
-          className={`text-lg font-brandon font-medium uppercase tracking-[2px] transition-all duration-1000 ease-out ${
-            subtitleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          Hookah Lounge & Tea House
-        </div>
+        <>
+          <div 
+            className={`transition-all duration-1000 ease-out ${
+              subtitleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+            style={{ fontSize: '12px', letterSpacing: '3px', fontWeight: 300, textTransform: 'uppercase', fontFamily: 'Brandon Text, sans-serif' }}
+          >
+            Hookah Lounge & Tea House
+          </div>
+          <div
+            className={`transition-all duration-1000 ease-out text-gray-400 text-xs mt-1 ${
+              subtitleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+            style={{ fontWeight: 300, fontFamily: 'Brandon Text, sans-serif', letterSpacing: '2px' }}
+          >
+            Since 2012
+          </div>
+        </>
       )}
     </div>
   );

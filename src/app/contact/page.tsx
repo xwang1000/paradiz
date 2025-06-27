@@ -26,7 +26,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="space-y-16">
+    <main className="max-w-4xl mx-auto px-4 py-12 overflow-x-hidden pl-10 lg:pl-0 space-y-16">
       {/* Welcome Section */}
       <section className="bg-teal text-creme py-20 text-center">
         <PageHeading className="text-creme">Contact Us</PageHeading>
@@ -79,11 +79,9 @@ export default function Contact() {
           </div>
 
           <div className="card">
-            <SectionHeading>Contact Information</SectionHeading>
             <div className="space-y-4">
               <div>
-                <h3 className={`font-bold text-gray-900 ${typographyClasses.contactInfo}`}>Address</h3>
-                <p className={`text-gray-600 ${typographyClasses.contactInfo}`}>3058 St Johns St, Port Moody, BC V3H 2C5</p>
+                <p className={`text-gray-600 ${typographyClasses.contactInfo}`}>3058 St Johns St, Port Moody</p>
               </div>
               <div>
                 <h3 className={`font-bold text-gray-900 ${typographyClasses.contactInfo}`}>Phone</h3>
@@ -99,6 +97,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 } 

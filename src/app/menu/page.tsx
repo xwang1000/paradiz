@@ -117,7 +117,7 @@ export default function MenuPage() {
       <div
         ref={logoBoxRef}
         className="flex items-center justify-center mb-6 w-full relative"
-        style={{ width: '100%', position: 'relative', padding: '50px' }}
+        style={{ width: '100%', position: 'relative'}}
       >
         <LogoHeader 
           showLogo={true}
