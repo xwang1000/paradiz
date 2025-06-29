@@ -24,11 +24,18 @@ export default function Home() {
         <div className="mt-12 w-full max-w-md">
           <div className="space-y-3">
             <div>
-              <p className="text-base font-brandon">3058 St Johns St, Port Moody</p>
+              <h3 className="text-lg font-brandon font-semibold mb-1">Address</h3>
+              <p className="text-base font-brandon">
+                3058 St Johns St, Port Moody
+                <br />
+                <a href="https://maps.app.goo.gl/HkPHg22F9mQovm8J8" target="_blank" rel="noopener noreferrer" className="text-base font-brandon text-teal hover:text-teal-dark transition-colors">Get Directions</a>
+              </p>
+              
             </div>
             <div>
               <h3 className="text-lg font-brandon font-semibold mb-1">Reservations</h3>
               <p className="text-base font-brandon">(604) 724-7235</p>
+              <a href="tel:6047247235" className="text-base font-brandon text-teal hover:text-teal-dark transition-colors">Call Us</a>
             </div>
             <div>
               <h3 className="text-lg font-brandon font-semibold mb-1">Follow Us on Instagram</h3>
@@ -53,7 +60,7 @@ export default function Home() {
               { label: 'Thursday', hours: '5pm - 1am' },
               { label: 'Friday', hours: '6pm - 2am' },
               { label: 'Saturday', hours: '6pm - 2am' },
-              { label: 'Sunday', hours: '5pm - 1am' },
+              { label: 'Sunday', hours: '6pm - 1am' },
             ].map((day, idx) => {
               const dayToGetDay = [1,2,3,4,5,6,0];
               return (

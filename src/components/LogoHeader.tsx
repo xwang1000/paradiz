@@ -43,7 +43,7 @@ export default function LogoHeader({
   return (
     <div
       className={`text-center ${className}`}
-      style={{ width: '100%', position: 'relative', padding: '50px 20px' }}
+      style={{ width: '100%', position: 'relative', padding: '30px 20px' }}
     >
       {showLogo && (
         <div className="flex items-center justify-center mb-6 w-full relative mb-6" style={{ width: '100%', position: 'relative' }}>
@@ -90,7 +90,13 @@ export default function LogoHeader({
             }`}
             style={{ fontWeight: 300, fontFamily: 'Brandon Text, sans-serif', letterSpacing: '2px' }}
           >
-            Since 2012
+            Serving Port Moody Since 2012
+            <br /><br />
+            Lots of Free Parking
+            <br />Sanitary & Disposable Hoses
+            <br /><br />
+            WEEKLY ENTERTAINMENT
+            <br />Live Music/DJ/Bellydance
           </div>
         </>
       )}
